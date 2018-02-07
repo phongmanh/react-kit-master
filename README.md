@@ -2240,7 +2240,10 @@ npm install react-redux --save
 npm install redux-thunk --save
 npm install react-router-dom --save
 npm install antd --save
-npm install node-sass-chokidar --save
-npm install npm-run-all --save
-npm install redux-ignore --save
-npm install react-addons-shallow-compare --save
+npm install  node-sass-chokidar --save
+npm install  npm-run-all --save
+npm install  redux-ignore --save
+npm install  react-addons-shallow-compare --save
+
+ <!-- font icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
-import App from '../src/main/app'
+import App from '../src/containers/app'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
@@ -12,6 +12,10 @@ import { LocaleProvider } from 'antd'
 import enUS from 'antd/lib/locale-provider/en_US'
 import 'antd/dist/antd.css'
 import '../src/contents/styles/style.css'
+import rootSaga from '../src/sagas/sagas'
+
+import createSagaMiddleware from 'redux-saga'
+
 
 
 function createLogger({ getState }) {
@@ -33,15 +37,19 @@ function createLogger({ getState }) {
 }
 
 //const loggerMiddleware = createLogger()
+const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 let store = createStore(
     reducersApp
     , composeEnhancers(applyMiddleware(
         thunkMiddleware,
+        sagaMiddleware,
         //loggerMiddleware
         createLogger
     ))
 )
+sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(
     <LocaleProvider locale={enUS}>

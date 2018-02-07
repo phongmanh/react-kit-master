@@ -349,4 +349,8 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty',
   },
+  externals: {
+    //'Config': JSON.stringify(env.stringified['process.env'].NODE_ENV !== '"production"' ? require('./config.prod.json') : require('./config.dev.json'))
+    'Config': JSON.stringify(require('./config.json'))
+  }
 };
